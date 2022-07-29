@@ -6,7 +6,7 @@
     <label for="filterText" class="form-label">Ürün ara</label>
     <input type="text" [(ngModel)]="filterText" class="form-control" id="filterText" placeholder="arama ifadesi giriniz">
 </div>
-<div *ngIf="filterText.length>2" class="alert alert-success">
+<div *ngIf="filterText.length>1" class="alert alert-success">
     {{filterText}} aradınız
 </div>
 
@@ -21,7 +21,7 @@
             <th>Stok Adedi</th>
         </tr>
     </thead>
-    <tr *ngFor="let product of products">
+    <tr *ngFor="let product of products | filterPipe:filterText">
         <td>{{product.productId}}</td>
         <td>{{product.productName |uppercase}}</td>
         <td>{{product.categoryId}}</td>
